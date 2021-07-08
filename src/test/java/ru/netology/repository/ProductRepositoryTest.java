@@ -31,6 +31,14 @@ class ProductRepositoryTest {
     }
 
     @Test
+    public void shouldRemoveByIdNull() {
+        repository.save(bookFirst);
+        repository.removeById(1000);
+        Product[] expected = new Product[]{bookFirst};
+        Product[] actual = repository.findAll();
+        assertArrayEquals(expected, actual);
+    }
+    @Test
     public void shouldFindById() {
         repository.save(coreJava);
         repository.save(bookFirst);
